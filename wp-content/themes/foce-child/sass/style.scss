@@ -1,0 +1,411 @@
+// Création de keyframes pour réutiliser l'animation selon le sens d'arrivée
+@keyframes fade-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(-75px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-top-opacity {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Création d'un keyframe pour l'apparition des titres
+@keyframes apparition {
+  from {
+    transform: translateY(120px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Création d'un keyframe de rotation pour les fleurs
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+//Création d'un keyframe de flottement pour le titre 
+@keyframes flottement {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(40px)
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+// Création de 2 keyframes de rotation et scale -20% et - 60%
+@keyframes rotate-scale-20 {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+  }
+  100% {
+    transform: scale(0.8) rotate(360deg);
+  }
+}
+
+@keyframes rotate-scale-60 {
+  0% {
+    transform: scale(0.4) rotate(0deg);
+  }
+  100% {
+    transform: scale(0.4) rotate(360deg);
+  }
+}
+
+////////////////////////////////////////////////////
+
+body {
+  // Header du site
+  .site-header {
+    .main-navigation {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80px;
+      .site-title {
+        &:hover {
+          color: #000 !important;
+        }
+        @media (max-width: 740px) {
+          display: none !important;
+        }
+      }
+      // Menu Burger
+      .burger-icon {
+        display: block !important;
+        position: absolute;
+        right: 150px;
+        @media (max-width: 740px) {
+          right: 0px;
+          position: relative;
+        }
+        &.line {
+          width: 100%;
+          height: 2px;
+          background-color: #000;
+          transition: transform 0.4s linear;
+        }
+        // Configuration pour la transformation en croix
+        .croixgauche{
+          transform: rotate(-45deg) translateY(3.5px);
+          transition: transform 0.4s linear;
+        }
+        .croixdroite{
+          transform: rotate(45deg) translateY(-3.5px);
+          transition: transform 0.4s linear;
+        }
+      }
+    }
+    .sidenav {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      max-width: 1440px;
+      height: 0;
+      position: fixed;
+      top: 80px;
+      background-color:#FFF5E9;
+      overflow: hidden;
+      transition: 0.5s;
+      z-index: 1;
+      &.active {
+        animation: fade-in-top-opacity 1s ease-in-out;
+        // Calcul de la hauteur à 100% moins la hauteur du menu nav pour qu'il reste visible
+        height: calc(100% - 80px);
+        max-width: 1440px;
+      }
+      .logoBurgerMenu {
+        width: 250px;
+        height: 150px;
+        margin-bottom: 50px;
+        margin-top: 20px;
+      }
+      ul {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        list-style-type: none;
+        margin: 0;
+        li {
+          font-size: 64px;
+          @media (max-width: 660px) {
+            font-size: 40px;
+          }
+          @media (max-width: 424px) {
+            font-size: 25px;
+          }
+          &::before, &::after {
+            @media (max-width: 1160px) {
+              content: '' !important;
+            }
+          } 
+          a {
+            text-decoration: none;
+            &:hover {
+              filter: drop-shadow(0px 0px 5px #FF5C00CC);
+              color: #000;
+            }
+          }
+        }
+        #Ligne1BurgerNav::before, #Ligne3BurgerNav::after, #Ligne4BurgerNav::after {
+          transform-origin: center center;
+          animation: rotate 20s linear infinite;
+        }
+        #Ligne2BurgerNav::before, #Ligne3BurgerNav::before, #Ligne4BurgerNav::before {
+          animation: flottement 6s 1s ease-in-out infinite;
+        }
+        #Ligne1BurgerNav {
+          &::before {
+            content: url(./assets/images-menu-burger/Fleur-violette.png);
+            position: absolute;
+            top: 50px;
+            left: -80px;
+          }
+          &::after {
+            content: url(./assets/images-menu-burger/Paquerette-blanche.png);
+            position: absolute;
+            animation: rotate-scale-20 20s linear infinite;
+            top: 90px;
+            left: 1030px;
+          } 
+        }
+        #Ligne2BurgerNav {
+          &::before {
+            content: url(./assets/images-menu-burger/Chat-bleu.png);
+            position: absolute;
+            top: 160px;
+            left: 300px;
+          }
+          &::after {
+            content: url(./assets/images-menu-burger/Fleur-rose.png);
+            position: absolute;
+            animation: rotate-scale-60 20s linear infinite;
+            top: 300px;
+            left: 1330px;
+          }
+        }
+        #Ligne3BurgerNav {
+          &::before {
+            content: url(./assets/images-menu-burger/Chat-noir.png);
+            position: absolute;
+            top: 450px;
+            left: 1100px;
+          }
+          &::after {
+            content: url(./assets/images-menu-burger/Fleur-boule-orange.png);
+            position: absolute;
+            top: 430px;
+            left: 250px;
+          }
+        }
+        #Ligne4BurgerNav {
+          &::before {
+            content: url(./assets/images-menu-burger/Chat-roux.png);
+            position: absolute;
+            top: 650px;
+            left: 100px;
+          }
+          &::after {
+            content: url(./assets/images-menu-burger/Fleur-orange-coin-droit.png);
+            position: absolute;
+            top: 580px;
+            left: 1100px;
+          }
+        }
+      }
+      .signature {
+        margin-top: 120px;
+      }
+    }
+  }
+  // Ajout d'un overflow hidden sur le main pour un rendu plus joli avec les fleurs de bas de page
+  main {
+    overflow: hidden;
+    // Application des animations sur la bannière
+    .banner {
+      position: relative;
+      animation: fade-in-top 1s ease-in-out;
+      overflow: hidden;
+      & video {
+        overflow: hidden;
+        object-fit: cover;
+        position: absolute;
+        @media (max-width: 426px) {
+          display: none;
+        }
+      }
+      & .box-titre {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & img {
+          position: relative;
+          animation: fade-in-bottom 1s ease-in-out, flottement 6s 1s ease-in-out infinite;
+          width: 100%;
+        }
+      }
+    }
+    // Application des animations à la section Story
+    .story {
+      animation: fade-in-bottom 1s ease-in-out;
+      // Ajout effet fade-in inverse pour compenser le mouvement sur les paragraphes
+      .fixe {
+        animation: fade-in-top-opacity 0.6s linear
+      }
+      #characters {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        // Titre Les Personnages de la section Characters
+        & .main-character {
+          display: flex;
+          align-items: flex-start;
+          height: auto;
+        }
+      }
+      // Propiété pour le fonctionnement du carrousel Swiper JS
+      & #characters div {
+        flex: none;
+      }
+      #place {
+        background-image: url(./assets/Studio_Koukaki-image_place.png);
+        position: relative;
+        h3 {
+          @media (max-width: 650px) {
+            transform: translateX(50px);
+          }
+        }
+        .nuages {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          filter: blur(13px);
+          top: 70px;
+          left: 950px;
+          @media (max-width: 740px) {
+            display: none;
+          }
+          .petit-nuage {
+            transform: translate(-250px, 60px);
+          }
+        }
+      }
+    }
+    // Application des animations à la section Studio
+    #studio {
+      margin-bottom: 100px;
+      h2::before {
+        @media (max-width: 920px) {
+          content: '';
+        }
+      }
+      // Sauf aux paragraphes
+      & > *:not(div) {
+        animation: fade-in-bottom 1s ease-in-out;
+      }
+      // Mais le pseudo-élément Before de la div doit être animé
+      div::before {
+        animation: fade-in-bottom 1s ease-in-out;
+      }
+    }
+    // Style de la nouvelle section oscars
+    .oscars {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fade-in-bottom 1s ease-in-out;
+      @media (max-width: 920px) {
+        flex-direction: column;
+      }
+      &::before {
+        content: url(./assets/paquerette.png);
+        position: relative;
+        left: 4em;
+        top: -120px;
+        @media (max-width: 920px) {
+          content: '';
+        }
+      }
+      &::after {
+        content: url(./assets/orchidee.png);
+        position: relative;
+        right: -4em;
+        top: -180px;
+        @media (max-width: 920px) {
+          content: '';
+        }
+      }
+      #texte-oscars {
+        background-image: url('./assets/background-orange.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        line-height: 1;
+        flex-wrap: wrap;
+      }
+    }
+    // Animation des titres
+    .titres {
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      & > span {
+        opacity: 0;
+      }
+      .texte-titre {
+        animation: apparition 2s ease-in-out forwards;
+      }
+    }
+  }
+  // Désactivation des fleurs initiales pour pouvoir en générer de nouvelles
+  .site-footer::before, .site-footer::after {
+    display: none !important;
+  }
+  // Application des animations de rotation aux différentes fleurs 
+  .fleurs::after, #studio h2::before, .site-footer::before, .oscars::before {
+    animation: rotate 20s linear infinite 1s;
+    transform-origin: center center;
+  }
+  // Rotation infinie de 5s au scroll de l'utilisateur sur la class .fleurs
+  .scroll::after, #studio h2.scroll::before, .site-footer.scroll::before, .oscars.scroll::before {
+    animation: rotate 5s linear infinite;
+    transform-origin: center center;
+  }
+}

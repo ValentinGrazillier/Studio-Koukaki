@@ -1,0 +1,383 @@
+@keyframes fade-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(-75px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in-top-opacity {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes apparition {
+  from {
+    transform: translateY(120px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes flottement {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes rotate-scale-20 {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+  }
+  100% {
+    transform: scale(0.8) rotate(360deg);
+  }
+}
+@keyframes rotate-scale-60 {
+  0% {
+    transform: scale(0.4) rotate(0deg);
+  }
+  100% {
+    transform: scale(0.4) rotate(360deg);
+  }
+}
+body .site-header .main-navigation {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+body .site-header .main-navigation .site-title:hover {
+  color: #000 !important;
+}
+@media (max-width: 740px) {
+  body .site-header .main-navigation .site-title {
+    display: none !important;
+  }
+}
+body .site-header .main-navigation .burger-icon {
+  display: block !important;
+  position: absolute;
+  right: 150px;
+}
+@media (max-width: 740px) {
+  body .site-header .main-navigation .burger-icon {
+    right: 0px;
+    position: relative;
+  }
+}
+body .site-header .main-navigation .burger-icon.line {
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  transition: transform 0.4s linear;
+}
+body .site-header .main-navigation .burger-icon .croixgauche {
+  transform: rotate(-45deg) translateY(3.5px);
+  transition: transform 0.4s linear;
+}
+body .site-header .main-navigation .burger-icon .croixdroite {
+  transform: rotate(45deg) translateY(-3.5px);
+  transition: transform 0.4s linear;
+}
+body .site-header .sidenav {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  height: 0;
+  position: fixed;
+  top: 80px;
+  background-color: #FFF5E9;
+  overflow: hidden;
+  transition: 0.5s;
+  z-index: 1;
+}
+body .site-header .sidenav.active {
+  animation: fade-in-top-opacity 1s ease-in-out;
+  height: calc(100% - 80px);
+  max-width: 1440px;
+}
+body .site-header .sidenav .logoBurgerMenu {
+  width: 250px;
+  height: 150px;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+body .site-header .sidenav ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  list-style-type: none;
+  margin: 0;
+}
+body .site-header .sidenav ul li {
+  font-size: 64px;
+}
+@media (max-width: 660px) {
+  body .site-header .sidenav ul li {
+    font-size: 40px;
+  }
+}
+@media (max-width: 424px) {
+  body .site-header .sidenav ul li {
+    font-size: 25px;
+  }
+}
+@media (max-width: 1160px) {
+  body .site-header .sidenav ul li::before, body .site-header .sidenav ul li::after {
+    content: "" !important;
+  }
+}
+body .site-header .sidenav ul li a {
+  text-decoration: none;
+}
+body .site-header .sidenav ul li a:hover {
+  filter: drop-shadow(0px 0px 5px rgba(255, 92, 0, 0.8));
+  color: #000;
+}
+body .site-header .sidenav ul #Ligne1BurgerNav::before, body .site-header .sidenav ul #Ligne3BurgerNav::after, body .site-header .sidenav ul #Ligne4BurgerNav::after {
+  transform-origin: center center;
+  animation: rotate 20s linear infinite;
+}
+body .site-header .sidenav ul #Ligne2BurgerNav::before, body .site-header .sidenav ul #Ligne3BurgerNav::before, body .site-header .sidenav ul #Ligne4BurgerNav::before {
+  animation: flottement 6s 1s ease-in-out infinite;
+}
+body .site-header .sidenav ul #Ligne1BurgerNav::before {
+  content: url(./assets/images-menu-burger/Fleur-violette.png);
+  position: absolute;
+  top: 50px;
+  left: -80px;
+}
+body .site-header .sidenav ul #Ligne1BurgerNav::after {
+  content: url(./assets/images-menu-burger/Paquerette-blanche.png);
+  position: absolute;
+  animation: rotate-scale-20 20s linear infinite;
+  top: 90px;
+  left: 1030px;
+}
+body .site-header .sidenav ul #Ligne2BurgerNav::before {
+  content: url(./assets/images-menu-burger/Chat-bleu.png);
+  position: absolute;
+  top: 160px;
+  left: 300px;
+}
+body .site-header .sidenav ul #Ligne2BurgerNav::after {
+  content: url(./assets/images-menu-burger/Fleur-rose.png);
+  position: absolute;
+  animation: rotate-scale-60 20s linear infinite;
+  top: 300px;
+  left: 1330px;
+}
+body .site-header .sidenav ul #Ligne3BurgerNav::before {
+  content: url(./assets/images-menu-burger/Chat-noir.png);
+  position: absolute;
+  top: 450px;
+  left: 1100px;
+}
+body .site-header .sidenav ul #Ligne3BurgerNav::after {
+  content: url(./assets/images-menu-burger/Fleur-boule-orange.png);
+  position: absolute;
+  top: 430px;
+  left: 250px;
+}
+body .site-header .sidenav ul #Ligne4BurgerNav::before {
+  content: url(./assets/images-menu-burger/Chat-roux.png);
+  position: absolute;
+  top: 650px;
+  left: 100px;
+}
+body .site-header .sidenav ul #Ligne4BurgerNav::after {
+  content: url(./assets/images-menu-burger/Fleur-orange-coin-droit.png);
+  position: absolute;
+  top: 580px;
+  left: 1100px;
+}
+body .site-header .sidenav .signature {
+  margin-top: 120px;
+}
+body main {
+  overflow: hidden;
+}
+body main .banner {
+  position: relative;
+  animation: fade-in-top 1s ease-in-out;
+  overflow: hidden;
+}
+body main .banner video {
+  overflow: hidden;
+  object-fit: cover;
+  position: absolute;
+}
+@media (max-width: 426px) {
+  body main .banner video {
+    display: none;
+  }
+}
+body main .banner .box-titre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body main .banner .box-titre img {
+  position: relative;
+  animation: fade-in-bottom 1s ease-in-out, flottement 6s 1s ease-in-out infinite;
+  width: 100%;
+}
+body main .story {
+  animation: fade-in-bottom 1s ease-in-out;
+}
+body main .story .fixe {
+  animation: fade-in-top-opacity 0.6s linear;
+}
+body main .story #characters {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+body main .story #characters .main-character {
+  display: flex;
+  align-items: flex-start;
+  height: auto;
+}
+body main .story #characters div {
+  flex: none;
+}
+body main .story #place {
+  background-image: url(./assets/Studio_Koukaki-image_place.png);
+  position: relative;
+}
+@media (max-width: 650px) {
+  body main .story #place h3 {
+    transform: translateX(50px);
+  }
+}
+body main .story #place .nuages {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  filter: blur(13px);
+  top: 70px;
+  left: 950px;
+}
+@media (max-width: 740px) {
+  body main .story #place .nuages {
+    display: none;
+  }
+}
+body main .story #place .nuages .petit-nuage {
+  transform: translate(-250px, 60px);
+}
+body main #studio {
+  margin-bottom: 100px;
+}
+@media (max-width: 920px) {
+  body main #studio h2::before {
+    content: "";
+  }
+}
+body main #studio > *:not(div) {
+  animation: fade-in-bottom 1s ease-in-out;
+}
+body main #studio div::before {
+  animation: fade-in-bottom 1s ease-in-out;
+}
+body main .oscars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fade-in-bottom 1s ease-in-out;
+}
+@media (max-width: 920px) {
+  body main .oscars {
+    flex-direction: column;
+  }
+}
+body main .oscars::before {
+  content: url(./assets/paquerette.png);
+  position: relative;
+  left: 4em;
+  top: -120px;
+}
+@media (max-width: 920px) {
+  body main .oscars::before {
+    content: "";
+  }
+}
+body main .oscars::after {
+  content: url(./assets/orchidee.png);
+  position: relative;
+  right: -4em;
+  top: -180px;
+}
+@media (max-width: 920px) {
+  body main .oscars::after {
+    content: "";
+  }
+}
+body main .oscars #texte-oscars {
+  background-image: url("./assets/background-orange.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  line-height: 1;
+  flex-wrap: wrap;
+}
+body main .titres {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+body main .titres > span {
+  opacity: 0;
+}
+body main .titres .texte-titre {
+  animation: apparition 2s ease-in-out forwards;
+}
+body .site-footer::before, body .site-footer::after {
+  display: none !important;
+}
+body .fleurs::after, body #studio h2::before, body .site-footer::before, body .oscars::before {
+  animation: rotate 20s linear infinite 1s;
+  transform-origin: center center;
+}
+body .scroll::after, body #studio h2.scroll::before, body .site-footer.scroll::before, body .oscars.scroll::before {
+  animation: rotate 5s linear infinite;
+  transform-origin: center center;
+}
+
+/*# sourceMappingURL=theme.css.map */
